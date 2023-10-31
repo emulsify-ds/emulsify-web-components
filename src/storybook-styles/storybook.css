@@ -1,0 +1,9 @@
+.sb-show-main {
+  background: var(--colors-sb-background);
+  color: var(--colors-sb-text-body);
+  font-family: var(--font-families-primary), serif !important;
+}
+
+#root>div {
+  padding: var(--spacing-xl);
+}
