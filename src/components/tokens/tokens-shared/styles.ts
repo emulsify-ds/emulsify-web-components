@@ -5,7 +5,7 @@ export default css`
     color: var(--colors-sb-text-heading);
     text-transform: uppercase;
     font-size: var(--font-size-hero);
-    margin: 0 0 var(--spacing-xxl);
+    margin: 0 0 var(--spacing-2xl);
     position: relative;
     font-family: var(--font-families-primary), serif !important;
   }
@@ -21,10 +21,10 @@ export default css`
   }
 
   .sb-subtitle {
-    font-family: var(--font-families-primary), serif !important;
+    font-family: var(--font-family-primary), serif !important;
     font-size: var(--font-size-h4);
     opacity: var(--opacity-80);
-    margin: var(--spacing-xxl) 0 var(--spacing-md);
+    margin: var(--spacing-2xl) 0 var(--spacing-md);
   }
 
   .sb-list {
