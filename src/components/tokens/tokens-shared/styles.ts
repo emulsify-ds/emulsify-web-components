@@ -4,10 +4,18 @@ export default css`
   .sb-title {
     color: var(--colors-sb-text-heading);
     text-transform: uppercase;
-    font-size: var(--font-size-hero);
+    font-size: var(--font-size-h1);
     margin: 0 0 var(--spacing-2xl);
     position: relative;
-    font-family: var(--font-families-primary), serif !important;
+    font-family: var(--font-family-primary), serif !important;
+  }
+
+  .sb-title-token {
+    color: var(--colors-sb-text-heading);
+    text-transform: uppercase;
+    font-size: var(--font-size-h3);
+    position: relative;
+    font-family: var(--font-family-primary), serif !important;
   }
 
   .sb-title::after {
@@ -27,9 +35,43 @@ export default css`
     margin: var(--spacing-2xl) 0 var(--spacing-md);
   }
 
-  .sb-list {
+  .sb-list,
+  .sb-color-list,
+  .sb-color-sub-list {
     margin: 0;
     padding: 0;
+  }
+
+  .sb-color-sub-list  {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .sb-color-list li,
+  .sb-color-sub-list li {
+    display: flex;
+    padding: 1rem;
+    font-size: 1rem;
+    list-style: none;
+    max-width: 13rem;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .sb-color-list__swatch {
+    position: relative;
+    width: 11rem;
+    height: 6rem;
+  }
+
+  .sb-custom-color-name {
+    margin: 1rem 0 0;
+    text-transform: capitalize;
+    font-size: var(--font-size-h5);
+  }
+
+  .sb-custom-color-property-name {
+    margin: 0.5rem 0;
   }
 
   .sb-list li {
