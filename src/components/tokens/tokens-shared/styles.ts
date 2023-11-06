@@ -50,8 +50,8 @@ export default css`
   .sb-color-list li,
   .sb-color-sub-list li {
     display: flex;
-    padding: 1rem;
-    font-size: 1rem;
+    padding: var(--spacing-lg);
+    font-size: var(--font-size-small);
     list-style: none;
     max-width: 13rem;
     flex-direction: column;
@@ -65,13 +65,13 @@ export default css`
   }
 
   .sb-custom-color-name {
-    margin: 1rem 0 0;
+    margin: var(--spacing-lg) 0 0;
     text-transform: capitalize;
     font-size: var(--font-size-h5);
   }
 
   .sb-custom-color-property-name {
-    margin: 0.5rem 0;
+    margin: var(--spacing-md) 0;
   }
 
   .sb-list li {
