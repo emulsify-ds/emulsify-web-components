@@ -1,5 +1,5 @@
-import { html, TemplateResult } from 'lit';
-export * from './emulsify-card';
+import { html } from 'lit';
+import './card';
 
 // Define the arguments for the card component
 export interface CardArgs {
@@ -10,14 +10,14 @@ export interface CardArgs {
 }
 
 // Define the card component
-export const EmulsifyCard = ({ src, title, text, url }: CardArgs): TemplateResult => html`
-  <emulsify-card url=${url} src=${src} title=${title} text=${text}></emulsify-card>
+export const EmulsifyCard = ({ src, title, text, url }: CardArgs) => html`
+  <ewc-card url=${url} src=${src} title=${title} text=${text}></ewc-card>
 `;
 
 // Define the story
 export default {
-  title: 'Molecules/Emulsify Card',
-  component: 'emulsify-card',
+  title: 'Molecules/Card',
+  component: 'ewc-card',
   argTypes: {
     src: { control: 'text', description: 'Image source', name: 'Card image source'},
     title: { control: 'text', description: 'Card title', name: 'Card title'},

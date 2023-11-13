@@ -1,7 +1,7 @@
-import { LitElement, css, html, TemplateResult } from 'lit';
-import { property } from 'lit/decorators.js';
-
-export class EmulsifyCard extends LitElement {
+import {LitElement, html, css} from 'lit';
+import {customElement, property} from 'lit/decorators.js';
+@customElement('ewc-card')
+export class Card extends LitElement {
   @property({ type: String })
   src: string = '';
 
@@ -44,11 +44,7 @@ export class EmulsifyCard extends LitElement {
 
   `;
 
-  constructor() {
-    super();
-  }
-
-  render(): TemplateResult {
+  render() {
     return html`
       <div class="card">
         <a class="card__link" href=${this.url}>
@@ -60,4 +56,3 @@ export class EmulsifyCard extends LitElement {
     `;
   }
 }
-customElements.define('emulsify-card', EmulsifyCard);
