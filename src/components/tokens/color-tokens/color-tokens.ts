@@ -14,7 +14,6 @@ export class ColorTokens extends LitElement {
     const items = Object.entries(this.tokens).map(
       ([token, data]) => {
         const newToken = token.replace(/\B([A-Z])\B/g, '-$1').toLowerCase();
-        console.log(Object.entries(data));
 
         return html`
           <h3 class="sb-title-token">${token}</h3>
