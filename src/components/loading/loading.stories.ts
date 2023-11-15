@@ -1,9 +1,10 @@
-import { html } from 'lit';
+import { Meta, StoryObj } from '@storybook/web-components';
 
 import './loading';
 
-export default {
+const meta: Meta = {
   title: 'Components/Loading',
+  component: 'ewc-loading',
   argTypes: {
     label: {
       name: 'Component label',
@@ -25,14 +26,12 @@ export default {
   },
 };
 
-const Template = (args: any) => html`
-  <ewc-loading .active=${args.active} .label=${args.label} .size=${args.size}></ewc-loading>
-`;
+export default meta;
 
-export const Loading = Template.bind({});
-
-Loading.args = {
-  size: 'md',
-  active: true,
-  label: 'Sending data...',
+export const Loading: StoryObj = {
+  args: {
+    size: 'md',
+    active: true,
+    label: 'Sending data...',
+  },
 };
