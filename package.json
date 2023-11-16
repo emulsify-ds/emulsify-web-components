@@ -6,8 +6,7 @@
     "develop": "npm run storybook",
     "build": "tsc && vite build",
     "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build",
-    "storybook:deploy": "storybook-to-ghpages -o .out",
+    "build-storybook": "storybook build",
     "style-dictionary:build": "node ./src/tokens/tokensTransform.js",
     "tokens:transform": "token-transformer ./src/tokens/figma.tokens.json ./src/tokens/transformed.tokens.json",
     "tokens:build": "npm run tokens:transform && npm run style-dictionary:build"
