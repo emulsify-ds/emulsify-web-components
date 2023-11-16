@@ -40,6 +40,8 @@ npm run develop
 This version only supports developing and previewing the components within Storybook. Support for building components for use in Drupal or frontend frameworks
 will be added later.
 
+[View the deployed storybook instance](https://emulsify-ds.github.io/emulsify-web-components/)
+
 ## Connecting components with Figma
 
 First, get your own copy of the [Emulsify UI kit](https://www.figma.com/community/file/1141071510618977331) from the Figma community.
