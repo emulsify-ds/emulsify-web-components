@@ -1,6 +1,5 @@
 import { html } from 'lit';
 import type { Meta } from '@storybook/web-components';
-import tokens from '../../tokens/transformed.tokens.json';
 
 import './pager';
 
@@ -19,24 +18,70 @@ const basicPagerData = {
   },
   items: {
     pages: [
-      { href: '#' },
-      { href: '#' },
-      { href: '#' },
-      { href: '#' },
-      { href: '#' }
+      { 1: { href: '#' }},
+      { 2: { href: '#' }},
+      { 3: { href: '#' }},
+      { 4: { href: '#' }},
+      { 5: { href: '#' }}
     ],
   }   
 };
 
-export const BasicPager = () => html`
-  <ewc-pager .data=${basicPagerData} .tokens=${tokens.pager}></ewc-pager>
+const withNextPagerData = {
+  current: 5,
+  ellipses: {
+    previous: false,
+    next: true,
+  },
+  items: {
+    next: {
+      href: '#',
+    },
+    pages: [
+      { 3: { href: '#' }},
+      { 4: { href: '#' }},
+      { 5: { href: '#' }},
+      { 6: { href: '#' }},
+      { 7: { href: '#' }}
+    ],
+  }   
+};
+
+const withBothPagerData = {
+  current: 5,
+  ellipses: {
+    previous: true,
+    next: true
+  },
+  items: {
+    previous: {
+      href: '#',
+    },
+    next: {
+      href: '#',
+    },
+    pages: [
+      { 3: { href: '#' }},
+      { 4: { href: '#' }},
+      { 5: { href: '#' }},
+      { 6: { href: '#' }},
+      { 7: { href: '#' }}
+    ],
+  }   
+};
+
+export const basic = () => html`
+  <ewc-pager .data=${basicPagerData}></ewc-pager>
 `;
 
-// export const basic = () => pager(pagerData);
+export const withNext = () => html`
+  <ewc-pager .data=${withNextPagerData}></ewc-pager>
+`;
 
-// export const withNext = () => pager({ ...pagerData, ...pagerNextEllipsesData });
+export const withBoth = () => html`
+  <ewc-pager .data=${withBothPagerData}></ewc-pager>
+`;
 
-// export const withBoth = () => pager({ ...pagerData, ...pagerBothEllipsesData });
 
 // export const withPrevious = () =>
 //   pager({ ...pagerData, ...pagerPrevEllipsesData });

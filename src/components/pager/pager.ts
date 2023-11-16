@@ -1,4 +1,4 @@
-import {LitElement, html} from 'lit';
+import {LitElement, html, css} from 'lit';
 import pagerStyles from './styles';
 import {customElement, property} from 'lit/decorators.js';
 
@@ -8,7 +8,13 @@ interface PagerData {
     first: {
       href: string,
     },
-    pages: any;
+    pages: [
+      {
+        key: {
+          href: string,
+        }
+      }
+    ];
   }
 }
 
@@ -20,12 +26,77 @@ export class Pager extends LitElement {
       first: {
         href: '',
       },
-      pages: [],
+      pages: [
+        {
+          key: {
+            href: '',
+          },
+        },
+      ],
     }
 };
 @property({ type: Object }) tokens = {};
 
-static styles = [pagerStyles];
+static styles = css`
+  .pager {
+    margin: var(--spacing-xl) 0;
+  }
+
+  .pager__items {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+
+  li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .visually-hidden {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px);
+    overflow: hidden;
+    height: 1px;
+    width: 1px;
+    word-wrap: normal;
+  }
+
+  .pager__item {
+    display: inline-block;
+    margin: 0;
+  }
+
+  .pager__link {
+    padding: var(--pager-padding-y) var(--pager-padding-x);
+    color: var(--pager-color-text-default);
+    text-decoration: none;
+  }
+
+  .pager__link:hover,
+  .pager__link:focus {
+    color: var(--pager-color-text-hover);
+    background-color: var(--pager-color-fill-hover);
+  }
+
+  .pager__link.is-active {
+    color: var(--pager-color-text-focus);
+  }
+
+  .pager__link.is-active:hover,
+  .pager__link.is-active:focus {
+    color: var(--pager-color-text-hover);
+  }
+
+  .pager__link--next,
+  .pager__link--prev,
+  .pager__link--first,
+  .pager__link--last {
+    display: block;
+    padding: var(--pager-padding-y) var(--pager-padding-x);
+  }
+`;
 
   override render() {
     const items = this.data.items;
@@ -43,20 +114,24 @@ static styles = [pagerStyles];
 
     // Generate the actual pager piece.
     const pages = items.pages.map(
-      (page: any, index: number) => html`
+      (page: any) => {
+        const key = parseInt(Object.keys(page)[0]);
+        const hrefValue = page[key].href;
+        return html`
         <li class="pager__item">
           <a
-            class="pager__link ${this.data.current === index ? 'is-active' : ''}" 
-            href="${page.href}" 
-            title="${this.data.current === index ? 'Current page' : `Go to page ${index}` }"
-            ${this.data.current === index ? 'aria-current="page"' : ''}>
+            class="pager__link ${this.data.current === key ? 'is-active' : ''}" 
+            href="${hrefValue}" 
+            title="${this.data.current === key ? 'Current page' : `Go to page ${key}` }"
+            ${this.data.current === key ? 'aria-current="page"' : ''}>
             <span class="visually-hidden">
-              ${this.data.current === index ? html`Current page` : html`Page`}
+              ${this.data.current === key ? html`Current page` : html`Page`}
             </span>
-            ${index}
+            ${key}
           </a>
         </li>
-      `,
+      `;
+     },
     );
 
     return html`
