@@ -5,7 +5,7 @@ import './pager';
 
 const meta: Meta = {
   title: 'Components/Pager',
-  component: 'ewc-pager',
+  component: 'emulsify-pager',
 };
 
 export default meta;
@@ -71,15 +71,15 @@ const withBothPagerData = {
 };
 
 export const basic = () => html`
-  <ewc-pager .data=${basicPagerData}></ewc-pager>
+  <emulsify-pager .data=${basicPagerData}></emulsify-pager>
 `;
 
 export const withNext = () => html`
-  <ewc-pager .data=${withNextPagerData}></ewc-pager>
+  <emulsify-pager .data=${withNextPagerData}></emulsify-pager>
 `;
 
 export const withBoth = () => html`
-  <ewc-pager .data=${withBothPagerData}></ewc-pager>
+  <emulsify-pager .data=${withBothPagerData}></emulsify-pager>
 `;
 
 

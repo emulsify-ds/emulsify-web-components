@@ -18,7 +18,7 @@ interface PagerData {
   }
 }
 
-@customElement('ewc-pager')
+@customElement('emulsify-pager')
 export class Pager extends LitElement {
 @property({ type: Object }) data: PagerData = {
     current: 0,
