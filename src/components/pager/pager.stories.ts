@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import type { Meta } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components';
 
 import './pager';
 
@@ -119,22 +119,32 @@ const withFirstAndLastData = {
   }   
 };
 
-export const basic = () => html`
-  <emulsify-pager .data=${basicPagerData}></emulsify-pager>
-`;
+export const BasicPager: StoryObj = {
+  args: {
+    data: basicPagerData,
+  },
+};
 
-export const withNext = () => html`
-  <emulsify-pager .data=${withNextPagerData}></emulsify-pager>
-`;
+export const withNextPager: StoryObj = {
+  args: {
+    data: withNextPagerData,
+  },
+};
 
-export const withBoth = () => html`
-  <emulsify-pager .data=${withBothPagerData}></emulsify-pager>
-`;
+export const withBothPager: StoryObj = {
+  args: {
+    data: withBothPagerData,
+  },
+};
 
-export const withPrevious = () => html`
-  <emulsify-pager .data=${withPreviousData}></emulsify-pager>
-`;
+export const withPrevious: StoryObj = {
+  args: {
+    data: withPreviousData,
+  },
+};
 
-export const withFirstAndLast = () => html`
-  <emulsify-pager .data=${withFirstAndLastData}></emulsify-pager>
-`;
+export const withFirstAndLast: StoryObj = {
+  args: {
+    data: withFirstAndLastData,
+  },
+};
