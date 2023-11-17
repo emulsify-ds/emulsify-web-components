@@ -118,31 +118,31 @@ const withFirstAndLastData = {
   }   
 };
 
-export const BasicPager: StoryObj = {
+export const Basic: StoryObj = {
   args: {
     data: basicPagerData,
   },
 };
 
-export const withNextPager: StoryObj = {
+export const WithNext: StoryObj = {
   args: {
     data: withNextPagerData,
   },
 };
 
-export const withBothPager: StoryObj = {
+export const WithBoth: StoryObj = {
   args: {
     data: withBothPagerData,
   },
 };
 
-export const withPrevious: StoryObj = {
+export const WithPrevious: StoryObj = {
   args: {
     data: withPreviousData,
   },
 };
 
-export const withFirstAndLast: StoryObj = {
+export const WithFirstAndLast: StoryObj = {
   args: {
     data: withFirstAndLastData,
   },
