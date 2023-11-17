@@ -1,4 +1,3 @@
-import { html } from 'lit';
 import type { Meta, StoryObj } from '@storybook/web-components';
 
 import './pager';
