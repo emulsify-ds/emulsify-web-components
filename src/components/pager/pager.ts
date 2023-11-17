@@ -1,11 +1,23 @@
 import {LitElement, html, css} from 'lit';
-import pagerStyles from './styles';
 import {customElement, property} from 'lit/decorators.js';
 
 interface PagerData {
   current: number;
+  ellipses: {
+    previous: boolean;
+    next: boolean;
+  }
   items: {
     first: {
+      href: string,
+    },
+    last: {
+      href: string,
+    },
+    previous: {
+      href: string,
+    },
+    next: {
       href: string,
     },
     pages: [
@@ -22,8 +34,21 @@ interface PagerData {
 export class Pager extends LitElement {
 @property({ type: Object }) data: PagerData = {
     current: 0,
+    ellipses: {
+      previous: false,
+      next: false,
+    },
     items: {
       first: {
+        href: '',
+      },
+      last: {
+        href: '',
+      },
+      previous: {
+        href: '',
+      },
+      next: {
         href: '',
       },
       pages: [
@@ -101,6 +126,7 @@ static styles = css`
   override render() {
     const items = this.data.items;
 
+    // Print first item.
     const firstPage = items.first && 
       html`
         <li class="pager__item pager__item--first">
@@ -111,6 +137,25 @@ static styles = css`
         </li>
       `
     ;
+
+    // Print previous item if we are not on the first page.
+    const previousPage = items.previous && 
+      html`
+        <li class="pager__item pager__item--prev">
+          <a class="pager__link pager__link--prev" href="${items.previous.href}" title="Go to previous page">
+            <span class="visually-hidden">Previous page</span>
+            <span aria-hidden="true">Previous</span>
+          </a>
+        </li>
+      `
+    ;
+
+    // Add an ellipsis if there are further previous pages.
+    const ellipsesPrevious = this.data.ellipses.previous ? 
+      html`
+        <li class="pager__item pager__item--ellipsis">&hellip;</li>
+      `
+    : '';
 
     // Generate the actual pager piece.
     const pages = items.pages.map(
@@ -134,11 +179,47 @@ static styles = css`
      },
     );
 
+    // Add an ellipsis if there are further next pages.
+    const ellipsesNext = this.data.ellipses.next ? 
+      html`
+        <li class="pager__item pager__item--ellipsis">&hellip;</li>
+      `
+    : '';
+
+    // Print next item if we are not on the last page.
+    const nextPage = items.next && 
+      html`
+        <li class="pager__item pager__item--next">
+          <a class="pager__link pager__link--next" href="${items.next.href}" title="Go to next page">
+            <span class="visually-hidden">Next page</span>
+            <span aria-hidden="true">Next</span>
+          </a>
+        </li>
+      `
+    ;
+
+    // Print last item.
+    const lastPage = items.last && 
+      html`
+        <li class="pager__item pager__item--last">
+          <a class="pager__link pager__link--last" href="${items.last.href}" title="Go to last page">
+            <span class="visually-hidden">Last page</span>
+            <span aria-hidden="true">Last</span>
+          </a>
+        </li>
+      `
+    ;
+
     return html`
       <nav class="pager">
         <ul class="pager__items">
           ${firstPage}
+          ${previousPage}
+          ${ellipsesPrevious}
           ${pages}
+          ${ellipsesNext}
+          ${nextPage}
+          ${lastPage}
         </ul>
       </nav>
     `;

@@ -51,7 +51,7 @@ const withBothPagerData = {
   current: 5,
   ellipses: {
     previous: true,
-    next: true
+    next: true,
   },
   items: {
     previous: {
@@ -70,6 +70,55 @@ const withBothPagerData = {
   }   
 };
 
+const withPreviousData = {
+  current: 8,
+  ellipses: {
+    previous: true,
+    next: false,
+  },
+  items: {
+    previous: {
+      href: '#',
+    },
+    pages: [
+      { 5: { href: '#' }},
+      { 6: { href: '#' }},
+      { 7: { href: '#' }},
+      { 9: { href: '#' }},
+      { 9: { href: '#' }}
+    ],
+  }   
+};
+
+const withFirstAndLastData = {
+  current: 10,
+  ellipses: {
+    previous: true,
+    next: true,
+  },
+  items: {
+    first: {
+      href: '#',
+    },
+    last: {
+      href: '#',
+    },
+    previous: {
+      href: '#',
+    },
+    next: {
+      href: '#',
+    },
+    pages: [
+      { 9: { href: '#' }},
+      { 10: { href: '#' }},
+      { 11: { href: '#' }},
+      { 12: { href: '#' }},
+      { 13: { href: '#' }}
+    ],
+  }   
+};
+
 export const basic = () => html`
   <emulsify-pager .data=${basicPagerData}></emulsify-pager>
 `;
@@ -82,9 +131,10 @@ export const withBoth = () => html`
   <emulsify-pager .data=${withBothPagerData}></emulsify-pager>
 `;
 
+export const withPrevious = () => html`
+  <emulsify-pager .data=${withPreviousData}></emulsify-pager>
+`;
 
-// export const withPrevious = () =>
-//   pager({ ...pagerData, ...pagerPrevEllipsesData });
-
-// export const withFirstAndLast = () =>
-//   pager({ ...pagerData, ...pagerFirstLastData });
+export const withFirstAndLast = () => html`
+  <emulsify-pager .data=${withFirstAndLastData}></emulsify-pager>
+`;
