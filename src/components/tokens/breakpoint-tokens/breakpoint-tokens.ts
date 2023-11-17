@@ -23,7 +23,7 @@ export class BreakpointTokens extends LitElement {
           </span>
           <span
             class="sb-list__visualization"
-            style="width: ${data.value}px; height: 25px; background: var(--colors-sb-visualization); display: block; border-radius: var(--radius-sm);"
+            style="width: var(--breakpoint-${token}); height: 25px; background: var(--colors-sb-visualization); display: block; border-radius: var(--radius-sm);"
           ></span>
         </li>
       `,

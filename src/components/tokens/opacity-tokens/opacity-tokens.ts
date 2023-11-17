@@ -15,7 +15,7 @@ export class OpacityTokens extends LitElement {
       ([token, data]) => html`
         <li class="sb-list__item">
           <span class="sb-list__label">${token}</span>
-          <span class="sb-list__value">${data.value}px</span>
+          <span class="sb-list__value">${data.value}</span>
           <span class="sb-list__custom-property">
             <code class="sb-custom-property-name">var(--opacity-${token})</code>
           </span>

@@ -12,48 +12,43 @@ export class ColorTokens extends LitElement {
 
   override render() {
     const items = Object.entries(this.tokens).map(
-      ([token, data]) => html`
-        <h2 class="sb-title">${token}</h2>
-        <ul class="sb-list">
-          ${data.value
-            ? html`
-                <li
-                  style="background: var(--color-${token});"
-                  class="token-card"
-                >
-                  <span>
-                    ${token}
-                    <span>
-                      <code class="sb-custom-property-name"
-                        >var(--color-${token})</code
-                      >
-                    </span>
+      ([token, data]) => {
+        const newToken = token.replace(/\B([A-Z])\B/g, '-$1').toLowerCase();
+
+        return html`
+          <h3 class="sb-title-token">${token}</h3>
+          <ul class="sb-color-list">
+            ${data.value
+              ? html`
+                <li class="sb-color-list__color">
+                  <span  class="sb-color-list__swatch" style="background: var(--color-${token});">
                   </span>
+                  <span class="sb-custom-color-name">${token}</span>
+                  <span class="sb-custom-color-property-name">${data.value}</span>
+                  <span class="sb-custom-property-name">var(--color-${token})</span>
                 </li>
-              `
-            : html`
-                <ul class="sb-list">
-                  ${Object.entries(data).map(
-                    ([subToken]) => html`
-                      <li
-                        style="background: var(--color-${token}-${subToken});"
-                        class="token-card"
-                      >
-                        <span>
-                          ${subToken}
-                          <span>
-                            <code class="sb-custom-property-name"
-                              >var(--color-${token}-${subToken})</code
-                            >
+                `
+              : html`
+                  <ul class="sb-color-sub-list">
+                    ${Object.entries(data).map(
+                      (subToken) => html`
+                        <li class="sb-color-list__color">
+                          <span  class="sb-color-list__swatch" style="background: var(--color-${newToken}-${subToken[0]});">
                           </span>
+                          <span class="sb-custom-color-name">${subToken[0]}</span>
+                          <span class="sb-custom-color-property-name">
+                            ${subToken[1].value}
                         </span>
-                      </li>
-                    `,
-                  )}
-                </ul>
-              `}
-        </ul>
-      `,
+                          <span class="sb-custom-property-name">var(--color-${newToken}-${subToken[0]})</span>
+                        </li>
+                      `,
+                    )}
+                  </ul>
+                `}
+          </ul>
+        `;
+        
+      }
     );
 
     return html`

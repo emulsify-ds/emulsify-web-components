@@ -17,11 +17,11 @@ export class BorderRadiusTokens extends LitElement {
           <span class="sb-list__label">${token}</span>
           <span class="sb-list__value">${data.value}px</span>
           <span class="sb-list__custom-property">
-            <code class="sb-custom-property-name">var(--token-${token})</code>
+            <code class="sb-custom-property-name">var(--radius-${token})</code>
           </span>
           <span
             class="sb-list__visualization"
-            style="border-radius: ${data.value}px; width: 75px; height: 75px; background: var(--colors-sb-visualization);"
+            style="border-radius: var(--radius-${token}); width: 75px; height: 75px; background: var(--colors-sb-visualization);"
           ></span>
         </li>
       `,
