@@ -29,7 +29,6 @@ export class Loading extends LitElement {
         border: var(--button-border-width-border-hover) solid
           var(--button-border-color-hover);
         color: var(--button-color-label-hover);
-        text-decoration: underline;
         text-transform: var(--button-text-case);
       }
 
