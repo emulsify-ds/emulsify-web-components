@@ -1,82 +1,71 @@
-import {LitElement, html, css} from 'lit';
-import {customElement, property} from 'lit/decorators.js';
+import { LitElement, html, css } from 'lit';
+import { AccordionItem } from './accordion-item';
+import { customElement, property } from 'lit/decorators.js';
 
-interface AccordionItem {
-  heading: string;
-  content: string;
-  active: boolean;
-}
+import './accordion-item';
 
 @customElement('emulsify-accordion')
 export class Accordion extends LitElement {
+  @property({ type: String }) heading = '';
   @property({ type: Array }) items: AccordionItem[] = [];
 
   static styles = css`
     .accordion {
       display: flex;
       flex-direction: column;
-      margin-bottom: var(--size-lg);
+      padding-block: var(--spacing-sm);
     }
 
-    .accordion-item {
-      border-bottom: 1px solid var(--accordion-divider-color);
-      padding-top: var(--spacing-lg);
+    .accordion__controls {
+      display: flex;
+      gap: var(--spacing-md);
     }
 
-    .accordion-item__heading {
+    .accordion__controls__item {
       cursor: pointer;
-      position: relative;
-      padding: var(--size-lg);
-      font-size: var(--font-size-small);
     }
 
-    .accordion-item__heading:hover {
-      background-color: var(--accordion-color-header-hover);
-    }
-
-    .accordion-item__toggle {
-      position: absolute;
-      right: var(--size-lg);
-      line-height: var(--size-lg);
-      font-size: var(--font-size-lead);
-    }
-
-    .accordion-item__content {
-      display: none;
-    }
-
-    .accordion-item__content.active {	
-      display: block;
-      padding: var(--size-lg);
-      font-size: var(--font-size-body);
-      border-top: 1px solid var(--color-grays-100);
+    .accordion__controls__item:not(:last-child) {
+      padding-right: var(--spacing-sm);
+      margin-right: var(--spacing-sm);
     }
   `;
 
-  toggle(index: number) {
-    this.items[index].active = !this.items[index].active;
+  toggleAll(state: boolean) {
+    this.items.map((item) => (item.active = state));
     this.requestUpdate();
   }
 
   render() {
     return html`
       <div class="accordion">
+        ${this.heading
+          ? html` <h2 class="accordion__heading">${this.heading}</h2> `
+          : ``}
+        <div class="accordion__controls">
+          <div
+            role="button"
+            class="accordion__controls__item"
+            @click=${() => this.toggleAll(true)}
+          >
+            Expand All ${html`&#43;`}
+          </div>
+          <div
+            role="button"
+            class="accordion__controls__item"
+            @click=${() => this.toggleAll(false)}
+          >
+            Collapse All ${html`&#8722;`}
+          </div>
+        </div>
         ${this.items.map(
-          (item, index) => html`
-            <div
-              class="accordion-item ${item.active ? 'active' : ''}" 
-            >
-              <div class="accordion-item__heading" @click=${() => this.toggle(index)}>
-                ${item.heading}
-                <span class="accordion-item__toggle">
-                  ${item.active ? html`&#8722;` : html`&#43;`}
-                </span>
-              </div>
-              <div class="accordion-item__content ${item.active ? 'active' : ''}">
-                ${item.content}
-              </div>
-            </div>
-          `
+          (item) => html`
+            <emulsify-accordion-item
+              .active=${item.active}
+              .heading=${item.heading}
+              .content=${item.content}
+            />
+          `,
         )}
       </div>
     `;
