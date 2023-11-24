@@ -19,7 +19,8 @@ export class Accordion extends LitElement {
     }
 
     .accordion-item {
-      border-bottom: 1px solid var(--color-grays-100);
+      border-bottom: 1px solid var(--accordion-divider-color);
+      padding-top: var(--spacing-lg);
     }
 
     .accordion-item__heading {
