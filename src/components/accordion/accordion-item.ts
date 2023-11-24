@@ -50,9 +50,12 @@ export class Accordion extends LitElement {
     }
   `;
 
-  toggle() {
-    this.active = !this.active;
-    this.requestUpdate();
+  handleButtonClick() {
+    const customEvent = new CustomEvent('press', {
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(customEvent);
   }
 
   render() {
@@ -60,7 +63,7 @@ export class Accordion extends LitElement {
     <div class="accordion-item ${this.active ? 'active' : ''}">
       <div
         class="accordion-item__heading"
-        @click=${() => this.toggle()}
+        @click=${this.handleButtonClick}
       >
         <h3 class="accordion-item__title">${this.heading}</h3>
         <span class="accordion-item__toggle">

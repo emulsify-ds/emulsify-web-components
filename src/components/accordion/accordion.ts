@@ -31,6 +31,11 @@ export class Accordion extends LitElement {
     }
   `;
 
+  toggleItem(index: number) {
+    this.items[index].active = !this.items[index].active;
+    this.requestUpdate();
+  }
+
   toggleAll(state: boolean) {
     this.items.map((item) => (item.active = state));
     this.requestUpdate();
@@ -59,11 +64,12 @@ export class Accordion extends LitElement {
           </div>
         </div>
         ${this.items.map(
-          (item) => html`
+          (item, index) => html`
             <emulsify-accordion-item
               .active=${item.active}
               .heading=${item.heading}
               .content=${item.content}
+              @press="${() => this.toggleItem(index)}"
             />
           `,
         )}
