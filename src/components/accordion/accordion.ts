@@ -31,7 +31,7 @@ export class Accordion extends LitElement {
     }
 
     .accordion-item__heading:hover {
-      background-color: var(--color-grays-100);
+      background-color: var(--accordion-color-header-hover);
     }
 
     .accordion-item__toggle {
