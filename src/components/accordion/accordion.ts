@@ -7,7 +7,7 @@ interface AccordionItem {
   active: boolean;
 }
 
-@customElement('ewc-accordion')
+@customElement('emulsify-accordion')
 export class Accordion extends LitElement {
   @property({ type: Array }) items: AccordionItem[] = [];
 

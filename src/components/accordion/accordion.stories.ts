@@ -4,7 +4,7 @@ import './accordion';
 
 const meta: Meta = {
   title: 'Components/Accordion',
-  component: 'ewc-accordion',
+  component: 'emulsify-accordion',
 };
 
 const accordionItem = {
