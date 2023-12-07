@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import tokens from '../../../tokens/transformed.tokens.json';
+import tokens from '../../transformed.tokens.json';
 
 import './color-tokens';
 
