@@ -5,7 +5,7 @@
   "scripts": {
     "develop": "run-p watch-typescript storybook",
     "clean": "rm -rf dist",
-    "build": "npm run clean && find src/components -name '*.ts' -not -name '*.stories.ts' -exec npx vite build -- {} \\;",
+    "build": "npm run clean && tsc && find src/components -name '*.ts' -not -name '*.stories.ts' -exec npx vite build -- {} \\;",
     "watch-typescript": "tsc --watch",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
