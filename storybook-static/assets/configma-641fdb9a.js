@@ -1,2 +1,0 @@
-const o="https://www.figma.com/file/eo87m50yAw3P8iXTypxw4I/Four-Kitchens-UI-Kit?node-id=",t="22343%3A575",i="22077%3A27",n="21931%3A684",e="22092%3A24",s="21930%3A594",c="22135%3A97",r="22039%3A329",a="3131%3A24",A="22039%3A177",d="22135%3A31",p={url:o,audioPlayer:t,button:i,borderRadius:n,border:e,breakpoint:s,lineHeight:c,opacity:r,size:a,spacing:A,fontSize:d};export{p as f};
-//# sourceMappingURL=configma-641fdb9a.js.map
