@@ -53,18 +53,24 @@ export class Breadcrumb extends LitElement {
   renderBreadcrumbItems() {
     const items = Object.values(this.data.items);
 
-    return items.map((item: any) => {
+    return items.map((item: any, index: number) => {
       const hrefValue = item.href;
       const titleValue = item.title;
-      return html`
-        <li class="breadcrumb__item">
-          <a
-            class="breadcrumb__link" 
-            href="${hrefValue}">
+      if (index === items.length - 1) {
+        return html`
+          <li class="breadcrumb__item breadcrumb__item--current">
             ${titleValue}
-          </a>
-        </li>
-      `;
+          </li>
+        `;
+      } else {
+        return html`
+          <li class="breadcrumb__item">
+            <a class="breadcrumb__link" href="${hrefValue}">
+              ${titleValue}
+            </a>
+          </li>
+        `;
+      }
     });
   }
 
