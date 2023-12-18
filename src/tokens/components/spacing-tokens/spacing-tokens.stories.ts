@@ -1,24 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import tokens from '../../../tokens/transformed.tokens.json';
 import figma from '../../../../.storybook/configma.json';
+import tokens from '../../transformed.tokens.json';
 
-import './opacity-tokens';
+import './spacing-tokens';
 
 const meta: Meta = {
-  title: 'Tokens/Opacity',
-  component: 'opacity-tokens',
+  title: 'Tokens/Spacing',
+  component: 'spacing-tokens',
 };
 
 export default meta;
 
-export const Opacity: StoryObj = {
+export const Spacing: StoryObj = {
   args: {
-    tokens: tokens.opacity,
+    tokens: tokens.spacing,
   },
   parameters: {
     design: {
       type: 'figma',
-      url: `${figma.url}${figma.opacity}`,
+      url: `${figma.url}${figma.spacing}`,
     },
   },
 };

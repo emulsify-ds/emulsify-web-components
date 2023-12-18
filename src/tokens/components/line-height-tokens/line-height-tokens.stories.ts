@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import tokens from '../../../tokens/transformed.tokens.json';
 import figma from '../../../../.storybook/configma.json';
+import tokens from '../../transformed.tokens.json';
 
 import './line-height-tokens';
 

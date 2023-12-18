@@ -1,7 +1,7 @@
 import type { Preview } from '@storybook/web-components';
 
-import '../src/components/tokens/tokens.css';
-import '../src/storybook-styles/storybook.css';
+import '../src/assets/tokens.css';
+import '../src/storybook/storybook.css';
 
 const preview: Preview = {
   parameters: {
