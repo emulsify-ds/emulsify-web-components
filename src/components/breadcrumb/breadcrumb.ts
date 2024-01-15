@@ -1,28 +1,34 @@
 import {LitElement, html, css} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
+import { visuallyHiddenStyle } from '../../assets/classes';
 
 @customElement('emulsify-breadcrumb')
 export class Breadcrumb extends LitElement {
 
   @property({ type: Object }) tokens = {};
 
-  static styles = css`
+  static styles = [
+    visuallyHiddenStyle,
+    css` 
     .breadcrumb__items {
       list-style: none;
       margin: 0;
       padding: 0;
     }
 
-    .breadcrumb__title {
-      position: absolute !important;
-      clip: rect(1px, 1px, 1px, 1px);
-      overflow: hidden;
-      height: 1px;
-      width: 1px;
-      word-wrap: normal;
+    .breadcrumb__item {
+      display: inline-block;
+      color: var(--color-text-body);
+
+      &::after {
+        content: "/";
+      }
+
+      &:last-child::after {
+        content: "";
+      }
     }
 
-    .breadcrumb__item,
     .breadcrumb__link,
     .breadcrumb__link:link,
     .breadcrumb__link:visited,
@@ -33,21 +39,8 @@ export class Breadcrumb extends LitElement {
 
     .breadcrumb__link:hover {
       color: var(--breadcrumb-text-hover);
-    }
-
-    .breadcrumb__item {
-      display: inline-block;
-      font-size: 0.75rem;
-
-      &::after {
-        content: "/";
-      }
-
-      &:last-child::after {
-        content: "";
-      }
-    }
-  `;
+    }`
+  ];
   data: any;
 
   renderBreadcrumbItems() {
@@ -77,7 +70,7 @@ export class Breadcrumb extends LitElement {
   render() {
     return html`
     <nav role='navigation' aria-labelledby='system-breadcrumb' class='breadcrumb'>
-      <h2 class='breadcrumb__title' id='system-breadcrumb'>Breadcrumb Menu</h2>
+      <h2 class='breadcrumb__title visually-hidden' id='system-breadcrumb'>Breadcrumb Menu</h2>
       <ol class='breadcrumb__items'>
         ${this.renderBreadcrumbItems()}
       </ol>

@@ -1,0 +1,12 @@
+import {css} from 'lit';
+
+export const visuallyHiddenStyle = css`
+  .visually-hidden {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px);
+    overflow: hidden;
+    height: 1px;
+    width: 1px;
+    word-wrap: normal;
+  }`;
+ 
